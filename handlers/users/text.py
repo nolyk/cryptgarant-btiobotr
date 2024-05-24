@@ -25,7 +25,7 @@ async def default_handler(msg: Message):
     )
 
 
-@vip.message_handler(text=default_button[1])
+@vip.message_handler(IsPrivate(), IsBan(), text=default_button[1])
 async def profile_handler(msg: Message):
     user = await Users().get(user_id=msg.from_user.id)
     if user.username != msg.from_user.username:
@@ -57,7 +57,7 @@ async def profile_handler(msg: Message):
         reply_markup=cabinet_markup()
     )
 
-@vip.callback_query_handler(IsPrivate(), IsBan(), text="user-profile")
+@vip.callback_query_handler(text="user-profile")
 async def profile_handler_call(call: CallbackQuery):
     user = await Users().get(user_id=call.from_user.id)
     if user.username != call.from_user.username:
