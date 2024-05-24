@@ -44,7 +44,8 @@ async def start_handler(msg: Message):
     else:
         await msg.answer(
             text=start_msg,
-            reply_markup=default_markup()
+            reply_markup=default_markup(),
+            disable_web_page_preview=True
         )
 
 
@@ -71,7 +72,8 @@ async def channels_handler(call: CallbackQuery):
             )
             await call.message.answer(
                 text=start_msg,
-                reply_markup=default_markup()
+                reply_markup=default_markup(),
+                disable_web_page_preview=True
             )
 
             if who_invite:
