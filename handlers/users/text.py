@@ -65,7 +65,6 @@ async def profile_handler_call(call: CallbackQuery):
             user_id=call.from_user.id,
             username=call.from_user.username
         )
-    await call.answer('')
     await call.message.edit_media(
         InputMediaPhoto(
             media=('https://telegra.ph/file/a0324f8b445c4b724dfcf.png'),
