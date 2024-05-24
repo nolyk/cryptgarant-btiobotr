@@ -12,8 +12,6 @@ inform_msg = """
 ℹ️ Правила гарант сервиса <a href="https://telegra.ph/Pravila-CryptoGarantsBot-05-24">»читать«</a>
 📃 Инструкция по гарант сервису <a href="https://telegra.ph/Instrukciya-po-CryptoGarantsBot-05-24">»читать«</a>
 </b>
-💬Наш чат - https://t.me/+EuWgOJ54HO1hN2Ey
-🔥По рекламе - https://t.me/byEnzo
 """
 
 blacklist_msg = """

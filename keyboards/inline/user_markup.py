@@ -60,13 +60,9 @@ def information_markup():
 		inline_keyboard=[
 			[
 				InlineKeyboardButton(
-					text="🤝 Наши Партнеры", callback_data='partners-bot')
-			],
-			[
+					text='💬Наш чат', url='https://t.me/+EuWgOJ54HO1hN2Ey'),
 				InlineKeyboardButton(
-					text='📣 Чат', url='https://t.me/EWayService'),
-				InlineKeyboardButton(
-					text='👨🏼‍🔧 Разработчик', url='https://t.me/the_vox'),
+					text='👨🔥По рекламе', url='https://t.me/byEnzo'),
 			],
 			[
 				InlineKeyboardButton(
