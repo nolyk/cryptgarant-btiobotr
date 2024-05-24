@@ -65,7 +65,7 @@ async def profile_handler_call(call: CallbackQuery):
             user_id=call.from_user.id,
             username=call.from_user.username
         )
-    await call.answer_photo(
+    await call.message.answer_photo(
         photo='https://imgur.com/ohG9xyX',
         caption=cabinet_msg.format(
             user_id=call.from_user.id,
