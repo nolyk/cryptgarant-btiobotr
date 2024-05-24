@@ -31,9 +31,9 @@ async def close_handler(call: CallbackQuery):
 @vip.callback_query_handler(text_startswith="return-menu:")
 async def return_handler(call: CallbackQuery):
     if call.data.split(":")[1] == "default":
-        await call.message.edit_caption(
-            reply_markup=garant_markup()
-        )
+        await call.message.edit_media(
+            InputMediaPhoto(media=('https://telegra.ph/file/a0324f8b445c4b724dfcf.png'), caption=''),
+            reply_markup=garant_markup())
     elif call.data.split(":")[1] == "cabinet":
         user = await Users.get(user_id=call.from_user.id)
         await call.message.edit_caption(
