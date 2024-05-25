@@ -13,8 +13,8 @@ class PayOk:
     def __init__(self):
         self._PAY_ID_ = config.config("payok_id")
         self._API_KEY_ = config.config("payok_api")
-        self._SHOP_ID_ = 5498
-        self._SECRET_KEY_: str = "369ca56f2e2c630b075fa2e532c4ec9e"
+        self._SHOP_ID_ = 12110
+        self._SECRET_KEY_: str = "20ACC7ECB6991B747D1C84093BE8927D-780EF149BCA3FB5B607AD6B9D856102C-42B378BC517B6E79441DDA078D003249"
         self._PAYOK_ = Payok(
             api_id=self._PAY_ID_,
             api_key=self._API_KEY_,
@@ -22,7 +22,7 @@ class PayOk:
             shop=self._SHOP_ID_
         )
 
-        self._DESC: str = "Пополнение @EWGarantBot"
+        self._DESC: str = "Пополнение @CryptoGarantsBot"
         self._CURRENCY = "RUB"
 
     async def createInvoice(self,

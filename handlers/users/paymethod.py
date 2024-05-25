@@ -159,6 +159,7 @@ async def check_card_handler(call: CallbackQuery):
 
 @vip.message_handler(state=PayokPay.amount)
 async def cryptbot_handler(msg: Message, state: FSMContext):
+
     if msg.text.isdecimal():
         invoice, pay_id = await PayOk().createInvoice(
             amount=msg.text
