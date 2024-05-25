@@ -47,7 +47,7 @@ class Cryptobot:
                 amount=amount,
                 currency=asset
             ),
-            description="Пополнение Garant • EW"
+            description="Пополнение CRYPTO GARANT [8%]"
         )
         await self.crypto.close()
 
