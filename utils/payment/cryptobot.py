@@ -33,7 +33,6 @@ class Cryptobot:
                 return amount / course.rate
 
     async def createInvoice(self,
-                            asset: str,
                             amount: float) -> Tuple[int, str, float]:
         """
         Создание инвойса на оплату
@@ -42,18 +41,23 @@ class Cryptobot:
         :return:
         """
         data = await self.crypto.create_invoice(
-            asset=asset,
-            amount=await self.getAmount(
-                amount=amount,
-                currency=asset
-            ),
+            amount=amount,
+            fiat='RUB',
+            currency_type='fiat',
             description="Пополнение CRYPTO GARANT [8%]"
         )
+        # data = await self.crypto.create_invoice(
+        #     amount=await self.getAmount(
+        #         amount=amount,
+        #         currency=asset
+        #     ),
+        #     description="Пополнение CRYPTO GARANT [8%]"
+        # )
         await self.crypto.close()
+        #
+        # rub_currency = float(self.cbrf.getCurrency()) * amount
 
-        rub_currency = float(self.cbrf.getCurrency()) * amount
-
-        return data.invoice_id, data.pay_url, rub_currency
+        return data.invoice_id, data.pay_url, amount
 
     async def paidInvoice(self,
                           invoice_id: int) -> bool:
@@ -110,8 +114,11 @@ class Cryptobot:
                     InlineKeyboardButton(
                         text='Оплатить', url=invoice_url
                     ),
+                    # InlineKeyboardButton(
+                    #     text='♻️ Проверить', callback_data=f'check-crypto-pay:{invoice_id}:{amount}:{asset}'
+                    # ),
                     InlineKeyboardButton(
-                        text='♻️ Проверить', callback_data=f'check-crypto-pay:{invoice_id}:{amount}:{asset}'
+                        text='♻️ Проверить', callback_data=f'check-crypto-pay:{invoice_id}:{amount}'
                     )
                 ],
                 [

@@ -22,25 +22,68 @@ async def payments_handler(call: CallbackQuery):
 
 @vip.callback_query_handler(text="user-сrypto-pay")
 async def crypto_handler(call: CallbackQuery):
+    await CryptobotPay.amount.set()
+    # async with state.proxy() as data:
+    #     data["currency"] = call.data.split(":")[1]
     await call.message.edit_media(
         InputMediaPhoto(
             media=('https://telegra.ph/file/d9e386fd4c8d1cf593154.png'),
-            caption="<b>Выберите монету для пополнения:</b>",
+            caption="<b>Введите сумму пополнения в Рублях:</b>",
         ),
-        reply_markup=Cryptobot().getCurrencyMarkup()
+        # reply_markup=Cryptobot().getCurrencyMarkup()
     )
 
 
+@vip.message_handler(state=CryptobotPay.amount)
+async def cryptbot_handler(msg: Message, state: FSMContext):
+    if msg.text.isdecimal():
 
-@vip.callback_query_handler(text_startswith="crypto-pay-currency:")
-async def crypto_handler(call: CallbackQuery, state: FSMContext):
-    await CryptobotPay.amount.set()
-    async with state.proxy() as data:
-        data["currency"] = call.data.split(":")[1]
 
-    await call.message.edit_caption(
-        caption="<b>Введите сумму пополнения в долларах:</b>"
+        invoice_id, invoice_url, amount = await Cryptobot().createInvoice(
+            amount=float(msg.text)
+        )
+    # async with state.proxy() as data:
+    #     currency = data['currency']
+    #
+    #
+    #
+        await msg.answer_photo(
+            photo='https://imgur.com/ohG9xyX',
+            caption="<b>Для оплаты перейдите по ссылке ниже, затем нажмите '♻️ Проверить'.</b>",
+            reply_markup=Cryptobot().geyCryptoPayMarkup(
+                invoice_url=invoice_url,
+                invoice_id=invoice_id,
+                amount=amount,
+                asset=currency
+            )
+        )
+
+    else:
+        await msg.answer_photo(
+            photo='https://imgur.com/ohG9xyX',
+            caption="<b>Нужно вводить число, а не поеботу!</b>",
+            reply_markup=return_markup()
+        )
+    await bot.delete_message(
+        chat_id=msg.from_user.id,
+        message_id=msg.message_id
     )
+    await bot.delete_message(
+        chat_id=msg.from_user.id,
+        message_id=msg.message_id - 1
+    )
+    await state.finish()
+
+
+# @vip.callback_query_handler(text_startswith="crypto-pay-currency:")
+# async def crypto_handler(call: CallbackQuery, state: FSMContext):
+#     await CryptobotPay.amount.set()
+#     async with state.proxy() as data:
+#         data["currency"] = call.data.split(":")[1]
+#
+#     await call.message.edit_caption(
+#         caption="<b>Введите сумму пополнения в долларах:</b>"
+#     )
 
 
 @vip.callback_query_handler(text_startswith="check-crypto-pay:")
@@ -77,42 +120,7 @@ async def check_crypto_handler(call: CallbackQuery):
         )
 
 
-@vip.message_handler(state=CryptobotPay.amount)
-async def cryptbot_handler(msg: Message, state: FSMContext):
-    if msg.text.isdecimal():
-        async with state.proxy() as data:
-            currency = data['currency']
 
-        invoice_id, invoice_url, amount = await Cryptobot().createInvoice(
-            asset=currency,
-            amount=float(msg.text)
-        )
-
-        await msg.answer_photo(
-            photo='https://imgur.com/ohG9xyX',
-            caption="<b>Для оплаты перейдите по ссылке ниже, затем нажмите '♻️ Проверить'.</b>",
-            reply_markup=Cryptobot().geyCryptoPayMarkup(
-                invoice_url=invoice_url,
-                invoice_id=invoice_id,
-                amount=amount,
-                asset=currency
-            )
-        )
-    else:
-        await msg.answer_photo(
-            photo='https://imgur.com/ohG9xyX',
-            caption="<b>Нужно вводить число, а не поеботу!</b>",
-            reply_markup=return_markup()
-        )
-    await bot.delete_message(
-        chat_id=msg.from_user.id,
-        message_id=msg.message_id
-    )
-    await bot.delete_message(
-        chat_id=msg.from_user.id,
-        message_id=msg.message_id - 1
-    )
-    await state.finish()
 
 
 @vip.callback_query_handler(text="user-card-pay")
