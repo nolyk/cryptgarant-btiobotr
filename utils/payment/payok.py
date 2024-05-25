@@ -13,7 +13,7 @@ class PayOk:
     def __init__(self):
         self._PAY_ID_ = config.config("payok_id")
         self._API_KEY_ = config.config("payok_api")
-        self._SHOP_ID_ = 12110
+        self._SHOP_ID_ = 5498
         self._SECRET_KEY_: str = "369ca56f2e2c630b075fa2e532c4ec9e"
         self._PAYOK_ = Payok(
             api_id=self._PAY_ID_,
