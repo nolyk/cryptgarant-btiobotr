@@ -36,25 +36,28 @@ async def return_handler(call: CallbackQuery):
             reply_markup=garant_markup())
     elif call.data.split(":")[1] == "cabinet":
         user = await Users.get(user_id=call.from_user.id)
-        await call.message.edit_caption(
-            caption=cabinet_msg.format(
-                user_id=call.from_user.id,
-                login=call.from_user.get_mention(),
-                data=str(user.date)[:10],
-                deals=await Deals.getCountUserDeals(
+        await call.message.edit_media(
+            InputMediaPhoto(
+                media=('https://telegra.ph/file/ba585ea63559091e3ac24.png'),
+                caption=cabinet_msg.format(
                     user_id=call.from_user.id,
-                    status="ALL"
+                    login=call.from_user.get_mention(),
+                    data=str(user.date)[:10],
+                    deals=await Deals.getCountUserDeals(
+                        user_id=call.from_user.id,
+                        status="ALL"
+                    ),
+                    success=await Deals.getCountUserDeals(
+                        user_id=call.from_user.id,
+                        status="Закрыта"
+                    ),
+                    canceled=await Deals.getCountUserDeals(
+                        user_id=call.from_user.id,
+                        status="Отменена"
+                    ),
+                    rating=user.rating,
+                    balance=user.balance
                 ),
-                success=await Deals.getCountUserDeals(
-                    user_id=call.from_user.id,
-                    status="Закрыта"
-                ),
-                canceled=await Deals.getCountUserDeals(
-                    user_id=call.from_user.id,
-                    status="Отменена"
-                ),
-                rating=user.rating,
-                balance=user.balance
             ),
             reply_markup=cabinet_markup()
         )
