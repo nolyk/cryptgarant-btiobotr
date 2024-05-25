@@ -54,7 +54,7 @@ async def cryptbot_handler(msg: Message, state: FSMContext):
                 invoice_url=invoice_url,
                 invoice_id=invoice_id,
                 amount=amount,
-                asset=currency
+                # asset=currency
             )
         )
 
