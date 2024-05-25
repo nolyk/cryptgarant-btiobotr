@@ -43,6 +43,7 @@ class Cryptobot:
         """
         data = await self.crypto.create_invoice(
             asset=asset,
+            fiat='RUB',
             amount=await self.getAmount(
                 amount=amount,
                 currency=asset
