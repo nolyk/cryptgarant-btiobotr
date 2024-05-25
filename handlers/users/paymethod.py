@@ -1,4 +1,4 @@
-from aiogram.types import CallbackQuery, Message
+from aiogram.types import CallbackQuery, Message, InputMediaPhotoInputMediaPhoto
 from aiogram.dispatcher import FSMContext
 
 from loader import vip, bot
@@ -10,18 +10,26 @@ from utils import Cryptobot, config, PayOk
 
 @vip.callback_query_handler(text="user-payments")
 async def payments_handler(call: CallbackQuery):
-    await call.message.edit_caption(
-        caption="<b>Выберите способ пополнения:</b>",
+    await call.message.edit_media(
+        InputMediaPhoto(
+            media=('https://telegra.ph/file/81baeb7d21293bc7ea1b1.png'),
+            caption="<b>Выберите способ пополнения:</b>",
+        ),
         reply_markup=payment_markup()
     )
 
 
+
 @vip.callback_query_handler(text="user-сrypto-pay")
 async def crypto_handler(call: CallbackQuery):
-    await call.message.edit_caption(
-        caption="<b>Выберите монету для пополнения:</b>",
+    await call.message.edit_media(
+        InputMediaPhoto(
+            media=('https://telegra.ph/file/d9e386fd4c8d1cf593154.png'),
+            caption="<b>Выберите монету для пополнения:</b>",
+        ),
         reply_markup=Cryptobot().getCurrencyMarkup()
     )
+
 
 
 @vip.callback_query_handler(text_startswith="crypto-pay-currency:")
