@@ -23,11 +23,8 @@ async def payments_handler(call: CallbackQuery):
 @vip.callback_query_handler(text="user-сrypto-pay")
 async def crypto_handler(call: CallbackQuery):
     await CryptobotPay.amount.set()
-    await call.message.edit_media(
-        InputMediaPhoto(
-            media=('https://telegra.ph/file/d9e386fd4c8d1cf593154.png'),
-            caption="<b>Введите сумму пополнения в Рублях:</b>",
-        ),
+    await call.message.edit_caption(
+        caption="<b>Введите сумму пополнения в рублях:</b>"
     )
 
 
