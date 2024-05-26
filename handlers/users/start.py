@@ -15,7 +15,7 @@ from utils import config
 async def start_handler(msg: Message):
     status, who_invite = await Users().joinFromBot(
         user_id=msg.from_user.id,
-        username=msg.from_user.username,
+        username=msg.from_user.username.lower(),
         who_invite=msg.text[7:]
     )
     if status:
