@@ -1,4 +1,3 @@
-# © copyright by VoX DoX
 from typing import Tuple, Union
 from loguru import logger
 
