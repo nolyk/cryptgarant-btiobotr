@@ -37,7 +37,7 @@ async def start_handler(msg: Message):
         markup = await ChannelSub.getChannelMarkup(who=msg.text[7:])
         if markup:
             await msg.answer(
-                text='<b>Чтобы пользоваться ботом, подпишись на наши каналы:</b>',
+                text='🔐Для доступа к нашему гарант сервису, вступите в наш гарант чат:',
                 reply_markup=markup
             )
 
