@@ -35,8 +35,17 @@ async def card_handler(call: CallbackQuery):
 @vip.message_handler(state=CryptobotWithdrawal.amount)
 async def crypto_amount_handler(msg: Message, state: FSMContext):
     amount = msg.text
-
     user = await Users.get(user_id=msg.from_user.id)
+
+    await bot.delete_message(
+        chat_id=msg.from_user.id,
+        message_id=msg.message_id - 1
+    )
+    await bot.delete_message(
+        chat_id=msg.from_user.id,
+        message_id=msg.message_id
+    )
+
     try:
         if float(user.balance) >= float(amount) > 0:
             await state.update_data(amount=amount)
@@ -48,25 +57,17 @@ async def crypto_amount_handler(msg: Message, state: FSMContext):
                      f"Для подтверждения вывода введите '+'</b>"
             )
 
-            await bot.delete_message(
-                chat_id=msg.from_user.id,
-                message_id=msg.message_id - 1
-            )
-            await bot.delete_message(
-                chat_id=msg.from_user.id,
-                message_id=msg.message_id
-            )
-            await CryptobotWithdrawal.next()
+
+            return await CryptobotWithdrawal.next()
         else:
-            await msg.answer(
+            return await msg.answer(
                 text="<b>Сумма вывода превышает ваш баланс!</b>"
             )
-            await state.finish()
+
     except ValueError:
-        await msg.answer(
+        return await msg.answer(
             text="<b>Сумма должна состоять из числа</b>"
         )
-        await state.finish()
 
 
 @vip.message_handler(state=CryptobotWithdrawal.confirm)
