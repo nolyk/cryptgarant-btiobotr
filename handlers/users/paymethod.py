@@ -87,7 +87,7 @@ async def cryptbot_handler(msg: Message, state: FSMContext):
     await state.finish()
 
 
-@vip.callback_query_handler(state=CryptobotPay.amount)
+@vip.callback_query_handler(state=(CryptobotPay.amount, PayokPay.amount))
 async def crypto_return(call: CallbackQuery, state: FSMContext):
     if call.data == 'return-menu:default':
         await state.finish()
@@ -144,7 +144,8 @@ async def check_crypto_handler(call: CallbackQuery):
 async def card_handler(call: CallbackQuery):
     await PayokPay.amount.set()
     await call.message.edit_caption(
-        caption="<b>Введите сумму пополнения в рублях:</b>"
+        caption="<b>Введите сумму пополнения в рублях:</b>",
+        reply_markup=return_markup()
     )
 
 
