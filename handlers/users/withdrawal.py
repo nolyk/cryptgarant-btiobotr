@@ -27,8 +27,12 @@ async def card_handler(call: CallbackQuery):
 @vip.callback_query_handler(text='user-withdrawal-crypto')
 async def card_handler(call: CallbackQuery):
     await CryptobotWithdrawal.amount.set()
-    await call.message.edit_caption(
-        caption="<b>Введите сумму вывода:</b>"
+    await call.message.delete()
+
+    await call.message.answer_photo(
+        photo='https://telegra.ph/file/d9e386fd4c8d1cf593154.png',
+        caption=f"<b>Введите сумму вывода:</b>",
+        reply_markup=return_markup()
     )
 
 
@@ -50,24 +54,31 @@ async def crypto_amount_handler(msg: Message, state: FSMContext):
         if float(user.balance) >= float(amount) > 0:
             await state.update_data(amount=amount)
 
-            await msg.answer(
-                text=f"<b>Отправить заявку на вывод?\n\n"
+            await msg.answer_photo(
+                photo='https://telegra.ph/file/d9e386fd4c8d1cf593154.png',
+                caption=f"<b>Отправить заявку на вывод?\n\n"
                      f"Тип: Cryptobot\n"
                      f"Сумма: {amount} RUB\n\n"
-                     f"Для подтверждения вывода введите '+'</b>"
+                     f"Для подтверждения вывода введите '+'</b>",
+                reply_markup=return_markup()
             )
 
-
             return await CryptobotWithdrawal.next()
+
         else:
-            return await msg.answer(
-                text="<b>Сумма вывода превышает ваш баланс!</b>"
+            return await msg.answer_photo(
+                photo='https://telegra.ph/file/d9e386fd4c8d1cf593154.png',
+                caption=f"<b>Сумма вывода превышает ваш баланс!</b>",
+                reply_markup=return_markup()
             )
 
     except ValueError:
-        return await msg.answer(
-            text="<b>Сумма должна состоять из числа</b>"
-        )
+        return await msg.answer_photo(
+                photo='https://telegra.ph/file/d9e386fd4c8d1cf593154.png',
+                caption=f"<b>Сумма должна состоять из числа</b>",
+                reply_markup=return_markup()
+            )
+
 
 
 @vip.message_handler(state=CryptobotWithdrawal.confirm)
