@@ -67,15 +67,15 @@ async def favor_handler(call: CallbackQuery):
     )
 
     await call.message.edit_text(
-        text=f'<b>🌀 Cделка #EW_{deal.id} успешно закрыта в пользу покупателя</b>'
+        text=f'<b>🌀 Cделка #CG_{deal.id} успешно закрыта в пользу покупателя</b>'
     )
     await bot.send_message(
         chat_id=deal.buyer_id,
-        text=f"<b>🌀 Cделка #EW_{deal.id} закрыта в вашу пользу</b>"
+        text=f"<b>🌀 Cделка #CG_{deal.id} закрыта в вашу пользу</b>"
     )
     await bot.send_message(
         chat_id=deal.seller_id,
-        text=f"<b>🌀 Cделка #EW_{deal.id} закрыта в пользу покупателя</b>"
+        text=f"<b>🌀 Cделка #CG_{deal.id} закрыта в пользу покупателя</b>"
     )
 
 
@@ -98,14 +98,14 @@ async def favor_handler(call: CallbackQuery):
     )
 
     await call.message.edit_text(
-        text=f'<b>🌀 Cделка #EW_{deal.id} успешно закрыта в пользу продавца</b>'
+        text=f'<b>🌀 Cделка #CG_{deal.id} успешно закрыта в пользу продавца</b>'
     )
 
     await bot.send_message(
         chat_id=deal.buyer_id,
-        text=f"<b>🌀 Cделка #EW_{deal.id} закрыта в пользу продавца!</b>"
+        text=f"<b>🌀 Cделка #CG_{deal.id} закрыта в пользу продавца!</b>"
     )
     await bot.send_message(
         chat_id=deal.seller_id,
-        text=f"<b>🌀 Cделка #EW_{deal.buyer_id} закрыта в вашу пользу</b>"
+        text=f"<b>🌀 Cделка #CG_{deal.buyer_id} закрыта в вашу пользу</b>"
     )

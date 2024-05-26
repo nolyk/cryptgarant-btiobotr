@@ -256,11 +256,11 @@ async def refurse_deal_handler(call: CallbackQuery):
     await call.message.delete()
 
     await call.message.answer(
-        text=f'<b>🌀 Сделка: #EW_{deal.id} Отменена</b>'
+        text=f'<b>🌀 Сделка: #CG_{deal.id} Отменена</b>'
     )
     await bot.send_message(
         chat_id=deal.buyer_id,
-        text=f'<b>🌀 Сделка: #EW_{deal.id} Отменена</b>'
+        text=f'<b>🌀 Сделка: #CG_{deal.id} Отменена</b>'
     )
     await Deals.updateStatus(
         dl_id=call.data.split(":")[1],
@@ -286,15 +286,15 @@ async def refund_deal_handler(call: CallbackQuery):
 
         await bot.send_message(
             chat_id=config.config('group_id'),
-            text=f'<b>🌀 Cделка #EW_{deal.id} отменена!</b>'
+            text=f'<b>🌀 Cделка #CG_{deal.id} отменена!</b>'
         )
         await bot.send_message(
             chat_id=deal.buyer_id,
-            text=f'<b>🌀 Cделка #EW_{deal.id} отменена, деньги вернулись вам на баланс!</b>'
+            text=f'<b>🌀 Cделка #CG_{deal.id} отменена, деньги вернулись вам на баланс!</b>'
         )
         await bot.send_message(
             chat_id=deal.seller_id,
-            text=f'<b>🌀 Вы отменили сделку #EW_{deal.id}, деньги были возвращены на баланс покупателя</b>'
+            text=f'<b>🌀 Вы отменили сделку #CG_{deal.id}, деньги были возвращены на баланс покупателя</b>'
         )
 
 
@@ -389,7 +389,7 @@ async def pay_deal_handler(call: CallbackQuery):
 
             await bot.send_message(
                 chat_id=config.config('admin_group'),
-                text=f"<b>🌀 Сделка:</b> #EW_{deal.id}\n\n"
+                text=f"<b>🌀 Сделка:</b> #CG_{deal.id}\n\n"
                      f"<b>💈 Продавец:</b> @{seller.username} | "
                      f"<b>Покупатель:</b> @{buyer.username}\n"
                      f"<b>💳 Сумма:</b> <code>{deal.amount}</code> RUB\n"

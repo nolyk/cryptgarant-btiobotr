@@ -130,7 +130,7 @@ class Deals(models.Deal):
                 emoji = "✅" if i.status == "Оплачена" else "♻️" if i.status != "Закрыта" else "💢"
                 markup.add(
                     InlineKeyboardButton(
-                        text=f'{emoji if i.status != "Арбитраж" else "👨‍⚖️"} Сделка:  #EW_{i.id} | {i.amount} ₽',
+                        text=f'{emoji if i.status != "Арбитраж" else "👨‍⚖️"} Сделка:  #CB_{i.id} | {i.amount} ₽',
                         callback_data=f'view-deal:{i.id}')
                 )
 
@@ -172,7 +172,7 @@ class Deals(models.Deal):
             for i in range(int(len(pages[page_number - 1]))):
                 markup.add(
                     InlineKeyboardButton(
-                        text=f"🤝 #EW_{pages[page_number - 1][x1].id} | {pages[page_number - 1][x1].amount} RUB",
+                        text=f"🤝 #CG_{pages[page_number - 1][x1].id} | {pages[page_number - 1][x1].amount} RUB",
                         callback_data=f"admin-active-deal:{pages[page_number - 1][x1].id}")
                 )
                 x1 += 1
@@ -234,7 +234,7 @@ class Deals(models.Deal):
             for i in range(int(len(pages[page_number - 1]))):
                 markup.add(
                     InlineKeyboardButton(
-                        text=f"👨🏻‍⚖️ #EW_{pages[page_number - 1][x1].id} | {pages[page_number - 1][x1].amount} RUB",
+                        text=f"👨🏻‍⚖️ #CG_{pages[page_number - 1][x1].id} | {pages[page_number - 1][x1].amount} RUB",
                         callback_data=f"admin-arb-deal:{pages[page_number - 1][x1].id}")
                 )
                 x1 += 1
