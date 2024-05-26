@@ -62,10 +62,11 @@ class PayOk:
                 for index in list(resp):
                     if index != "status":
                         print(resp[index])
-                        if resp[f"{index}"]['payment_id'] == bill_id:
-                            print(index)
-                            if int(resp[f"{index}"]['transaction_status']) == 1:
-                                return True
+
+                        # if resp[f"{index}"]['payment_id'] == bill_id:
+                        #     print(index)
+                        #     if int(resp[f"{index}"]['transaction_status']) == 1:
+                        #         return True
             return False
 
     @staticmethod
