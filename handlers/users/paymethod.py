@@ -152,19 +152,39 @@ async def card_handler(call: CallbackQuery):
 @vip.message_handler(state=PayokPay.amount)
 async def cryptbot_handler(msg: Message, state: FSMContext):
     if msg.text.isdecimal():
-        invoice, pay_id = await PayOk().createInvoice(
-            amount=msg.text
-        )
 
-        await msg.answer_photo(
-            photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
-            caption="<b>Для оплаты перейдите по ссылке ниже, затем нажмите '♻️ Проверить'.</b>",
-            reply_markup=PayOk().geyCardMarkup(
-                invoice_id=pay_id,
-                invoice_url=invoice,
-                amount=msg.text
+        cur_amount = float(msg.text)
+
+        if cur_amount >= 50:
+
+            invoice, pay_id = await PayOk().createInvoice(
+                amount=cur_amount
             )
-        )
+
+            await msg.answer_photo(
+                photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
+                caption="<b>Для оплаты перейдите по ссылке ниже, затем нажмите '♻️ Проверить'.</b>",
+                reply_markup=PayOk().geyCardMarkup(
+                    invoice_id=pay_id,
+                    invoice_url=invoice,
+                    amount=cur_amount
+                )
+            )
+        else:
+            await bot.delete_message(
+                chat_id=msg.from_user.id,
+                message_id=msg.message_id
+            )
+            await bot.delete_message(
+                chat_id=msg.from_user.id,
+                message_id=msg.message_id - 1
+            )
+            return await msg.answer_photo(
+                photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
+                caption="<b>Минимальная сумма пополнения 50RUB</b>",
+                reply_markup=return_markup()
+            )
+
     else:
         return await msg.answer_photo(
             photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
