@@ -79,6 +79,12 @@ async def crypto_amount_handler(msg: Message, state: FSMContext):
                 reply_markup=return_markup()
             )
 
+@vip.callback_query_handler(state=CryptobotWithdrawal)
+async def crypto_return(call: CallbackQuery, state: FSMContext):
+    if call.data == 'return-menu:default':
+        await state.finish()
+        from handlers.users.callback import return_handler
+        await return_handler(call)
 
 
 @vip.message_handler(state=CryptobotWithdrawal.confirm)
