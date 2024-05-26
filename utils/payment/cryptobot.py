@@ -61,7 +61,7 @@ class Cryptobot:
         invoice = await self.crypto.get_invoices(
             invoice_ids=invoice_id
         )
-        print(invoice[0])
+        # print(invoice[0])
         await self.crypto.close()
         if invoice[0].status == "paid":
             return True
