@@ -78,7 +78,7 @@ async def cryptbot_handler(msg: Message, state: FSMContext):
     await state.finish()
 
 
-@vip.callback_query_handler(text_startswith="return-menu:default:")
+@vip.callback_query_handler(state=CryptobotPay.amount, text_startswith="return-menu:default:")
 async def crypto_return(call: CallbackQuery, state: FSMContext):
     await state.finish
     from handlers.users.callback import return_handler
