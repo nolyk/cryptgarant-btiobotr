@@ -71,7 +71,7 @@ class ChannelSub(models.Channels):
                     break
             markup.add(
                 InlineKeyboardButton(
-                    text='Проверить подписки', callback_data=f'check-subscribes-channels:{who}')
+                    text='✅Я вступил', callback_data=f'check-subscribes-channels:{who}')
             )
 
             return markup
