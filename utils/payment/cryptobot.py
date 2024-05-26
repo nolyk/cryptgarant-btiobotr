@@ -32,8 +32,10 @@ class Cryptobot:
             if course.source == currency and course.target == 'USD':
                 return amount / course.rate
 
-    async def createInvoice(self,
-                            amount: float) -> Tuple[int, str, float]:
+    async def createInvoice(
+            self,
+            amount: float
+    ) -> Tuple[int, str, float]:
         """
         Создание инвойса на оплату
         :param asset: str (монета)

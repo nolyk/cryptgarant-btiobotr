@@ -38,24 +38,19 @@ async def crypto_handler(call: CallbackQuery):
 async def cryptbot_handler(msg: Message, state: FSMContext):
     if msg.text.isdecimal():
 
+        cur_amount = float(msg.text)
 
-        if float(msg.text) >= 50:
+        if cur_amount >= 50:
             invoice_id, invoice_url, amount = await Cryptobot().createInvoice(
-                amount=float(msg.text)
+                amount=cur_amount+cur_amount*0.03
             )
-        # async with state.proxy() as data:
-        #     currency = data['currency']
-        #
-        #
-        #
             await msg.answer_photo(
                 photo='https://imgur.com/ohG9xyX',
                 caption="<b>Для оплаты перейдите по ссылке ниже, затем нажмите '♻️ Проверить'.</b>",
                 reply_markup=Cryptobot().geyCryptoPayMarkup(
                     invoice_url=invoice_url,
                     invoice_id=invoice_id,
-                    amount=amount,
-                    # asset=currency
+                    amount=cur_amount,
                 )
             )
         else:
