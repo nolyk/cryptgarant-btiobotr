@@ -19,7 +19,6 @@ async def payments_handler(call: CallbackQuery):
     )
 
 
-
 @vip.callback_query_handler(text="user-сrypto-pay")
 async def crypto_handler(call: CallbackQuery):
     await CryptobotPay.amount.set()
@@ -37,7 +36,7 @@ async def cryptbot_handler(msg: Message, state: FSMContext):
 
         if cur_amount >= 50:
             invoice_id, invoice_url, amount = await Cryptobot().createInvoice(
-                amount=cur_amount+cur_amount*0.03
+                amount=cur_amount + cur_amount * 0.03
             )
             await msg.answer_photo(
                 photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
@@ -49,8 +48,18 @@ async def cryptbot_handler(msg: Message, state: FSMContext):
                 )
             )
         else:
-            return await msg.answer(
-                text='Минимальная сумма пополнения 50RUB'
+            await bot.delete_message(
+                chat_id=msg.from_user.id,
+                message_id=msg.message_id
+            )
+            await bot.delete_message(
+                chat_id=msg.from_user.id,
+                message_id=msg.message_id - 1
+            )
+            return await msg.answer_photo(
+                photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
+                caption="<b>Минимальная сумма пополнения 50RUB</b>",
+                reply_markup=return_markup()
             )
 
     else:
@@ -131,9 +140,6 @@ async def check_crypto_handler(call: CallbackQuery):
         )
 
 
-
-
-
 @vip.callback_query_handler(text="user-card-pay")
 async def card_handler(call: CallbackQuery):
     await PayokPay.amount.set()
@@ -148,7 +154,6 @@ async def cryptbot_handler(msg: Message, state: FSMContext):
         invoice, pay_id = await PayOk().createInvoice(
             amount=msg.text
         )
-
 
         await msg.answer_photo(
             photo='https://telegra.ph/file/81baeb7d21293bc7ea1b1.png',
@@ -208,6 +213,3 @@ async def check_card_handler(call: CallbackQuery):
         await call.answer(
             text="💢 Пополнение не найдено!"
         )
-
-
-
