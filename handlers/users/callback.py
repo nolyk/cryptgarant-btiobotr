@@ -104,7 +104,7 @@ async def parners_handler(call: CallbackQuery):
         InputMediaPhoto(
             media=('https://telegra.ph/file/3d4f38822820766cbedfd.png'),
             caption=refferal_msg.format(
-                bot_login="EWGarantBot",
+                bot_login="CryptoGarantsBot",
                 ref_code=call.from_user.id,
                 ref_percent=config.config("ref_percent")
             ),
