@@ -72,29 +72,29 @@ def information_markup():
 	return markup
 
 
-def partners_markup():
-	markup = InlineKeyboardMarkup(
-		inline_keyboard=[
-			[
-				InlineKeyboardButton(
-					text='📣 End Soft', url='https://t.me/End_Soft'),
-				InlineKeyboardButton(
-					text='🕹 Форум', url='https://endway.su'),
-			],
-			[
-				InlineKeyboardButton(
-					text='🌡 EW Житуха | Общение', url='https://t.me/+PfUvAksMqb05NDdi'),
-				InlineKeyboardButton(
-					text='🧪 End Way Chat', url='https://t.me/End_Groups'),
-			],
-			[
-				InlineKeyboardButton(
-					text="« Вернуться назад", callback_data='return-menu:default')
-			],
-		]
-	)
-
-	return markup
+# def partners_markup():
+# 	markup = InlineKeyboardMarkup(
+# 		inline_keyboard=[
+# 			[
+# 				InlineKeyboardButton(
+# 					text='📣 End Soft', url='https://t.me/End_Soft'),
+# 				InlineKeyboardButton(
+# 					text='🕹 Форум', url='https://endway.su'),
+# 			],
+# 			[
+# 				InlineKeyboardButton(
+# 					text='🌡 EW Житуха | Общение', url='https://t.me/+PfUvAksMqb05NDdi'),
+# 				InlineKeyboardButton(
+# 					text='🧪 End Way Chat', url='https://t.me/End_Groups'),
+# 			],
+# 			[
+# 				InlineKeyboardButton(
+# 					text="« Вернуться назад", callback_data='return-menu:default')
+# 			],
+# 		]
+# 	)
+#
+# 	return markup
 
 
 def cabinet_markup():

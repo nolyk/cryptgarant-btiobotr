@@ -11,6 +11,8 @@ inform_msg = """
 <b>💬 Наш торговый чат </b><a href="https://t.me/+EuWgOJ54HO1hN2Ey"><b>»вступить«</b></a>
 <b>ℹ️ Правила гарант сервиса </b><a href="https://telegra.ph/Pravila-CryptoGarantsBot-05-24"><b>»читать«</b></a><b>
 📃 Инструкция по гарант сервису </b><a href="https://telegra.ph/Instrukciya-po-CryptoGarantsBot-05-24"><b>»читать«</b></a>
+
+<b>👤Поддержка: <a href="https://t.me/CG_arbitr">CG_arbitr</a></b>
 """
 
 blacklist_msg = """

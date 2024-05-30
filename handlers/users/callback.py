@@ -90,12 +90,12 @@ async def inform_handler(call: CallbackQuery):
     )
 
 
-@vip.callback_query_handler(text="partners-bot")
-async def partners_bot_handler(call: CallbackQuery):
-    await call.message.edit_caption(
-        caption="<b>Наши партнеры:</b>",
-        reply_markup=partners_markup()
-    )
+# @vip.callback_query_handler(text="partners-bot")
+# async def partners_bot_handler(call: CallbackQuery):
+#     await call.message.edit_caption(
+#         caption="<b>Наши партнеры:</b>",
+#         reply_markup=partners_markup()
+#     )
 
 
 @vip.callback_query_handler(text="user-parners")
