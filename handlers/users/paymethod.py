@@ -21,11 +21,13 @@ async def payments_handler(call: CallbackQuery):
 
 @vip.callback_query_handler(text="user-сrypto-pay")
 async def crypto_handler(call: CallbackQuery):
-    await CryptobotPay.amount.set()
+
     await call.message.edit_caption(
         caption="<b>Введите сумму пополнения в рублях:</b>",
         reply_markup=return_markup()
     )
+    await CryptobotPay.amount.set()
+
 
 
 @vip.message_handler(state=CryptobotPay.amount)
