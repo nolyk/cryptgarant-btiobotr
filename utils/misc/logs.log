@@ -3395,3 +3395,15 @@
 2026-01-20 21:07:23.895 | INFO     | data.functions.user:joinFromBot:164 - Запись нового пользователя: 7070811816 | noodyblood 
 2026-01-20 21:49:23.294 | INFO     | __main__:shutdown:28 - Stopping bot...
 2026-01-20 21:49:23.321 | INFO     | data.functions:close_orm:36 - Tortoise-ORM shutdown
+2026-01-20 22:08:46.414 | INFO     | utils.misc.logger:<module>:5 - START LOGGER
+2026-01-20 22:08:47.649 | INFO     | data.functions:init_orm:31 - Tortoise-ORM started, {'models': {'Users': <class 'data.functions.user.Users'>, 'BlackList': <class 'data.functions.blacklist.BlackList'>, 'Withdrawal': <class 'data.functions.withdrawl.Withdrawal'>, 'WithdrawalLogs': <class 'data.functions.withdrawl.WithdrawalLogs'>, 'Deals': <class 'data.functions.deals.Deals'>, 'Reviews': <class 'data.functions.deals.Reviews'>, 'DepositLogs': <class 'data.functions.deposit.DepositLogs'>, 'ChannelSub': <class 'data.functions.channel.ChannelSub'>, 'Aerich': <class 'aerich.models.Aerich'>}}
+2026-01-20 22:08:47.973 | INFO     | __main__:shutdown:28 - Stopping bot...
+2026-01-20 22:08:47.975 | INFO     | data.functions:close_orm:36 - Tortoise-ORM shutdown
+2026-01-21 18:32:51.343 | INFO     | utils.misc.logger:<module>:5 - START LOGGER
+2026-01-21 18:32:52.407 | INFO     | data.functions:init_orm:31 - Tortoise-ORM started, {'models': {'Users': <class 'data.functions.user.Users'>, 'BlackList': <class 'data.functions.blacklist.BlackList'>, 'Withdrawal': <class 'data.functions.withdrawl.Withdrawal'>, 'WithdrawalLogs': <class 'data.functions.withdrawl.WithdrawalLogs'>, 'Deals': <class 'data.functions.deals.Deals'>, 'Reviews': <class 'data.functions.deals.Reviews'>, 'DepositLogs': <class 'data.functions.deposit.DepositLogs'>, 'ChannelSub': <class 'data.functions.channel.ChannelSub'>, 'Aerich': <class 'aerich.models.Aerich'>}}
+2026-01-21 18:32:58.452 | INFO     | __main__:shutdown:28 - Stopping bot...
+2026-01-21 18:32:58.452 | INFO     | data.functions:close_orm:36 - Tortoise-ORM shutdown
+2026-02-08 11:21:50.366 | INFO     | utils.misc.logger:<module>:5 - START LOGGER
+2026-02-08 11:21:51.564 | INFO     | data.functions:init_orm:31 - Tortoise-ORM started, {'models': {'Users': <class 'data.functions.user.Users'>, 'BlackList': <class 'data.functions.blacklist.BlackList'>, 'Withdrawal': <class 'data.functions.withdrawl.Withdrawal'>, 'WithdrawalLogs': <class 'data.functions.withdrawl.WithdrawalLogs'>, 'Deals': <class 'data.functions.deals.Deals'>, 'Reviews': <class 'data.functions.deals.Reviews'>, 'DepositLogs': <class 'data.functions.deposit.DepositLogs'>, 'ChannelSub': <class 'data.functions.channel.ChannelSub'>, 'Aerich': <class 'aerich.models.Aerich'>}}
+2026-02-08 11:48:15.478 | INFO     | __main__:shutdown:28 - Stopping bot...
+2026-02-08 11:48:15.484 | INFO     | data.functions:close_orm:36 - Tortoise-ORM shutdown
