@@ -1,3 +1,4 @@
+pip>=23.0
 aiopayok~=0.2.1
 aiocryptopay>=0.5.0
 certifi
